@@ -46,11 +46,6 @@ namespace Service.Services
             return await _employeeRepo.GetByAgeAsync(age);
         }
 
-        public async Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId)
-        {
-            return await _employeeRepo.GetByDepartmentIdAsync(departmentId);
-        }
-
         public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync()
         {
             return await _employeeRepo.GetAllDepartmentNameAsync();

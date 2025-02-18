@@ -37,7 +37,7 @@ namespace CompanyApp.Controllers
             var employee = await _employeeService.GetByIdAsync(id);
             if (employee != null)
             {
-                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId} , DepartmentName : {employee.Department.Name}");
+                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
             }
             else
             {
@@ -175,27 +175,12 @@ namespace CompanyApp.Controllers
             }
         }
 
-        public async Task GetByDepartmentIdAsync()
+        public async Task GetAllDepartmentNameAsync()
         {
-            Console.WriteLine("Enter Department Id for Employees:");
-            int departmentId = int.Parse(Console.ReadLine());
-
-            var employees = await _employeeService.GetByDepartmentIdAsync(departmentId);
-            foreach (var employee in employees)
-            {
-                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
-            }
-        }
-
-        public async Task GetByDepartmentNameAsync()
-        {
-            Console.WriteLine("Enter Department Name for Employees:");
-            string departmentName = Console.ReadLine();
-
             var employees = await _employeeService.GetAllDepartmentNameAsync();
             foreach (var employee in employees)
             {
-                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
+                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Department: {employee.Department.Name}");
             }
         }
 
