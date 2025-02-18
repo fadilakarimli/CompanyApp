@@ -57,7 +57,7 @@ namespace CompanyApp.Controllers
             var department = await _departmentService.GetByIdAsync(id);
             if (department != null)
             {
-                Console.WriteLine($"Id: {department.Id}, Name: {department.Name}");
+                Console.WriteLine($"Id: {department.Id}, Name: {department.Name} Capacity: {department.Capacity}");
             }
             else
             {

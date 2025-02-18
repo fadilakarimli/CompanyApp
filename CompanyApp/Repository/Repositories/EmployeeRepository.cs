@@ -21,11 +21,10 @@ namespace Repository.Repositories
             return await _context.Employees.Where(e => e.DepartmentId == departmentId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Employee>> GetByDepartmentNameAsync(string departmentName)
+        public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync()
         {
             return await _context.Employees
                 .Include(e => e.Department)
-                .Where(e => e.Department.Name == departmentName)
                 .ToListAsync();
         }
 

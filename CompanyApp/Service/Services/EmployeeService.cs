@@ -51,9 +51,9 @@ namespace Service.Services
             return await _employeeRepo.GetByDepartmentIdAsync(departmentId);
         }
 
-        public async Task<IEnumerable<Employee>> GetByDepartmentNameAsync(string departmentName)
+        public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync()
         {
-            return await _employeeRepo.GetByDepartmentNameAsync(departmentName);
+            return await _employeeRepo.GetAllDepartmentNameAsync();
         }
 
         public async Task<IEnumerable<Employee>> SearchAsync(string nameOrSurname)
