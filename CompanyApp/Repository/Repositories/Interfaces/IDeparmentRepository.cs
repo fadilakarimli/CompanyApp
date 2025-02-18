@@ -9,5 +9,6 @@ namespace Repository.Repositories.Interfaces
 {
     public interface IDeparmentRepository : IBaseRepository<Department>
     {
+        Task<IEnumerable<Department>> SearchAsync(string name);
     }
 }

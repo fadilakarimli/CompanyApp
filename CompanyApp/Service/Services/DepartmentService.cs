@@ -38,9 +38,11 @@ namespace Service.Services
             return await _deparmentRepo.GetByIdAsync(id);
         }
 
-        public Task UpdateAsync(int id, Department department)
+        public async Task<IEnumerable<Department>> SearchAsync(string name)
         {
-            throw new NotImplementedException();
+            return await _deparmentRepo.SearchAsync(name);
         }
+
+       
     }
 }

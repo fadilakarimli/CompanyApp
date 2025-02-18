@@ -10,10 +10,15 @@ namespace Service.Services.Interfaces
     public interface IEmployeeService
     {
         Task CreateAsync(Employee employee);
-        Task<IEnumerable<Employee>> GetAllAsync();
         Task<Employee> GetByIdAsync(int id);
+        Task<IEnumerable<Employee>> GetAllAsync();
+        //Task UpdateAsync(int id, Employee employee);
         Task DeleteAsync(int id);
-        Task UpdateAsync(int id, Employee employee);
+        Task<IEnumerable<Employee>> GetByAgeAsync(int age);
+        Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId);
+        Task<IEnumerable<Employee>> GetByDepartmentNameAsync(string departmentName);
+        Task<IEnumerable<Employee>> SearchAsync(string nameOrSurname);
+        Task<int> GetEmployeesCountAsync();
 
     }
 }

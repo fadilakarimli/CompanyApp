@@ -19,28 +19,51 @@ namespace Service.Services
         }
         public async Task CreateAsync(Employee employee)
         {
-           await _employeeRepo.CreateAsync(employee);
+            await _employeeRepo.CreateAsync(employee);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<Employee> GetByIdAsync(int id)
         {
-           var exsitEmployee= await _employeeRepo.GetByIdAsync(id);
-            await _employeeRepo.DeleteAsync(exsitEmployee);
+            return await _employeeRepo.GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<Employee>> GetAllAsync()
         {
-           return await _employeeRepo.GetAllAsync();
+            return await _employeeRepo.GetAllAsync();
         }
 
-        public Task<Employee> GetByIdAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            return _employeeRepo.GetByIdAsync(id);
+            var existEmployee = await _employeeRepo.GetByIdAsync(id);
+            if (existEmployee != null)
+            {
+                await _employeeRepo.DeleteAsync(existEmployee);
+            }
         }
 
-        public Task UpdateAsync(int id, Employee employee)
+        public async Task<IEnumerable<Employee>> GetByAgeAsync(int age)
         {
-            throw new NotImplementedException();
+            return await _employeeRepo.GetByAgeAsync(age);
+        }
+
+        public async Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId)
+        {
+            return await _employeeRepo.GetByDepartmentIdAsync(departmentId);
+        }
+
+        public async Task<IEnumerable<Employee>> GetByDepartmentNameAsync(string departmentName)
+        {
+            return await _employeeRepo.GetByDepartmentNameAsync(departmentName);
+        }
+
+        public async Task<IEnumerable<Employee>> SearchAsync(string nameOrSurname)
+        {
+            return await _employeeRepo.SearchAsync(nameOrSurname);
+        }
+
+        public async Task<int> GetEmployeesCountAsync()
+        {
+            return await _employeeRepo.GetEmployeesCountAsync();
         }
     }
 }

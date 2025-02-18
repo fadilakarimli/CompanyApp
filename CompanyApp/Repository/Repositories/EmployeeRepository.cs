@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repository.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,34 @@ namespace Repository.Repositories
 {
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
-        public Task<IEnumerable<Employee>> GetAllEmployeeWithDepartmentNameAsync()
+        public async Task<IEnumerable<Employee>> GetByAgeAsync(int age)
         {
-            throw new NotImplementedException();
+            return await _context.Employees.Where(e => e.Age == age).ToListAsync();
         }
 
-        public Task<IEnumerable<Employee>> GetEmployeeByAge(int age)
+        public async Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId)
         {
-            throw new NotImplementedException();
+            return await _context.Employees.Where(e => e.DepartmentId == departmentId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Employee>> GetByDepartmentNameAsync(string departmentName)
+        {
+            return await _context.Employees
+                .Include(e => e.Department)
+                .Where(e => e.Department.Name == departmentName)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Employee>> SearchAsync(string key)
+        {
+            return await _context.Employees
+                .Where(e => e.Name.Contains(key) || e.Surname.Contains(key))
+                .ToListAsync();
+        }
+
+        public async Task<int> GetEmployeesCountAsync()
+        {
+            return await _context.Employees.CountAsync();
         }
     }
 }
