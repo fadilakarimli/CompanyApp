@@ -17,7 +17,7 @@ namespace CompanyApp.Controllers
             _departmentService = new DepartmentService();
         }
 
-        public async Task CreateDepartmentAsync()
+        public async Task CreateAsync()
         {
             Console.WriteLine("Enter department name:");
             string name = Console.ReadLine();
@@ -32,7 +32,7 @@ namespace CompanyApp.Controllers
         }
 
 
-        public async Task DeleteDepartmentAsync()
+        public async Task DeleteAsync()
         {
             Console.WriteLine("Enter department Id for delete:");
             int id = int.Parse(Console.ReadLine());
@@ -49,7 +49,7 @@ namespace CompanyApp.Controllers
             }
         }
 
-        public async Task GetDepartmentByIdAsync()
+        public async Task GetByIdAsync()
         {
             Console.WriteLine("Enter department Id:");
             int id = int.Parse(Console.ReadLine());
@@ -65,7 +65,7 @@ namespace CompanyApp.Controllers
             }
         }
 
-        public async Task GetAllDepartmentsAsync()
+        public async Task GetAllAsync()
         {
             var departments = await _departmentService.GetAllAsync();
             foreach (var department in departments)
@@ -74,7 +74,7 @@ namespace CompanyApp.Controllers
             }
         }
 
-        public async Task SearchDepartmentsAsync()
+        public async Task SearchAsync()
         {
             Console.WriteLine("Enter department name for search:");
             string name = Console.ReadLine();
