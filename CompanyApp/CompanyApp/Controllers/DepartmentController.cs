@@ -22,7 +22,21 @@ namespace CompanyApp.Controllers
         {
             try
             {
-                Console.WriteLine("Enter department name:");
+                var departments = await _departmentService.GetAllAsync();
+                if (departments.Any())
+                {
+                    Console.WriteLine("EXISTING DEPARTMENTS:");
+                    foreach (var item in departments)
+                    {
+                        Console.WriteLine($"Id: {item.Id}, Name: {item.Name}, Capacity: {item.Capacity}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No existing departments found.");
+                }
+
+                Console.WriteLine("Enter Department Name:");
             Name:
                 string name = Console.ReadLine();
 
@@ -38,7 +52,14 @@ namespace CompanyApp.Controllers
                     goto Name;
                 }
 
-                Console.WriteLine("Enter department capacity:");
+                var existingDepartment = departments.FirstOrDefault(d => d.Name.ToLower() == name.ToLower());
+                if (existingDepartment != null)
+                {
+                    Console.WriteLine($"A department with the name '{name}' already exists. Please choose a different name.");
+                    goto Name;
+                }
+
+                Console.WriteLine("Enter Department Capacity:");
             Capacity:
                 string capacityInput = Console.ReadLine();
                 int capacity;
@@ -48,6 +69,8 @@ namespace CompanyApp.Controllers
                     Console.WriteLine("Invalid capacity. Please enter a valid number greater than 0.");
                     goto Capacity;
                 }
+
+                name = char.ToUpper(name[0]) + name.Substring(1).ToLower();
 
                 Department department = new Department
                 {
@@ -62,41 +85,83 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
-        }
-
+        }//+
         public async Task DeleteAsync()
         {
-            Console.WriteLine("Enter department Id for delete:");
-            int id = int.Parse(Console.ReadLine());
-
-            var department = await _departmentService.GetByIdAsync(id);
-            if (department != null)
+            try
             {
-                await _departmentService.DeleteAsync(id);
-                Console.WriteLine("Department successfully deleted.");
-            }
-            else
-            {
-                Console.WriteLine("Department not found.");
-            }
-        }
+                var departments = await _departmentService.GetAllAsync();
 
+                Console.WriteLine("DEPARTMENTS LIST");
+                if (departments.Any())
+                {
+                    foreach (var department in departments)
+                    {
+                        Console.WriteLine($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
+                    }
+
+                DeleteId:
+                    Console.WriteLine("Enter Department Id to delete:");
+                    string input = Console.ReadLine();
+                    int id;
+
+                    if (!int.TryParse(input, out id))
+                    {
+                        Console.WriteLine("Invalid input! Please enter a valid numeric Id.");
+                        goto DeleteId;
+                    }
+
+                    var departmentToDelete = await _departmentService.GetByIdAsync(id);
+
+                    if (departmentToDelete != null)
+                    {
+                        await _departmentService.DeleteAsync(id);
+                        Console.WriteLine("Department successfully deleted.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Department not found!");
+                        goto DeleteId;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No departments available to delete.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }//+
         public async Task GetByIdAsync()
         {
-            Console.WriteLine("Enter department Id:");
-            int id = int.Parse(Console.ReadLine());
-
-            var department = await _departmentService.GetByIdAsync(id);
-            if (department != null)
+            try
             {
-                Console.WriteLine($"Id: {department.Id}, Name: {department.Name} Capacity: {department.Capacity}");
-            }
-            else
-            {
-                Console.WriteLine("Department not found.");
-            }
-        }
+                Console.WriteLine("Enter Department Id:");
+                int id;
 
+                while (!int.TryParse(Console.ReadLine(), out id) || id <= 0)
+                {
+                    Console.WriteLine("Invalid Id. Please enter a valid positive integer.");
+                }
+
+                var department = await _departmentService.GetByIdAsync(id);
+
+                if (department != null)
+                {
+                    Console.WriteLine($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
+                }
+                else
+                {
+                    Console.WriteLine("Department not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }//+
         public async Task GetAllAsync()
         {
             var departments = await _departmentService.GetAllAsync();
@@ -104,12 +169,29 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine($"Id: {department.Id}, Name: {department.Name} , {department.Capacity}");
             }
-        }
+        }//+
 
         public async Task SearchAsync()
         {
+        EnterName:
             Console.WriteLine("Enter department name for search:");
-            string name = Console.ReadLine();
+            string name = Console.ReadLine()?.Trim();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                var allDepartments = await _departmentService.GetAllAsync();
+                foreach (var dept in allDepartments)
+                {
+                    Console.WriteLine($"Id: {dept.Id}, Name: {dept.Name}");
+                }
+                return;
+            }
+
+            if (int.TryParse(name, out int num) || name.Any(ch => !char.IsLetterOrDigit(ch) && !char.IsWhiteSpace(ch)))
+            {
+                Console.WriteLine("Format is wrong. Please enter a valid department name.");
+                goto EnterName;
+            }
 
             var departments = await _departmentService.SearchAsync(name);
             if (departments.Any())
@@ -121,37 +203,99 @@ namespace CompanyApp.Controllers
             }
             else
             {
-                Console.WriteLine("Departments not found with name.");
+                Console.WriteLine("Department not found.");
+                goto EnterName;
             }
-        }
+        }//+
 
         public async Task UpdateAsync()
         {
-            Console.WriteLine("Enter Department Id for update:");
-            int id = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter new Department Name:");
-            string newName = Console.ReadLine();
-
-            Console.WriteLine("Enter new Department Capacity:");
-            int newCapacity = int.Parse(Console.ReadLine());
-
-            var department = new Department
-            {
-                Name = newName,
-                Capacity = newCapacity
-            };
-
             try
             {
-                await _departmentService.UpdateAsync(id, department);
-                Console.WriteLine("Department updated successfully!");
+                Console.WriteLine("DEPARTMENTS LIST");
+
+                var departments = await _departmentService.GetAllAsync();
+
+                if (departments.ToList().Count > 0)
+                {
+                    foreach (var department in departments)
+                    {
+                        Console.WriteLine($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
+                    }
+
+                    Console.WriteLine("Enter Department Id for update:");
+                    int id;
+                    while (true)
+                    {
+                        string idInput = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(idInput) || !int.TryParse(idInput, out id))
+                        {
+                            Console.WriteLine("Department Id cannot be empty. Please enter a valid Id.");
+                            continue;
+                        }
+
+                        var departmentToEdit = await _departmentService.GetByIdAsync(id);
+
+                        if (departmentToEdit == null)
+                        {
+                            Console.WriteLine("Department not found! Please enter a valid Id.");
+                            continue;
+                        }
+
+                        Console.WriteLine("Enter new Name:");
+                    Name:
+                        string newName = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newName))
+                        {
+                            newName = departmentToEdit.Name;
+                        }
+                        else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
+                        {
+                            Console.WriteLine("Name can only contain letters and spaces. Please try again.");
+                            goto Name;
+                        }
+
+                        departmentToEdit.Name = newName;
+
+                    Capacity:
+                        Console.WriteLine("Enter new Capacity:");
+                        string capacityInput = Console.ReadLine();
+                        int newCapacity = departmentToEdit.Capacity;
+
+                        if (string.IsNullOrWhiteSpace(capacityInput))
+                        {
+                            newCapacity = departmentToEdit.Capacity;
+                        }
+                        else if (int.TryParse(capacityInput, out int parsedCapacity) && parsedCapacity > 0)
+                        {
+                            newCapacity = parsedCapacity;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Capacity must be a positive number. Please enter a valid capacity.");
+                            goto Capacity;
+                        }
+
+                        departmentToEdit.Capacity = newCapacity;
+
+                        await _departmentService.UpdateAsync(id, departmentToEdit);
+
+                        Console.WriteLine("Department updated successfully!");
+                        break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No departments available to edit.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-        }
+        }//+
+
 
 
 

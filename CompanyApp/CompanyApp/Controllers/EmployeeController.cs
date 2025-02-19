@@ -179,7 +179,7 @@ namespace CompanyApp.Controllers
             var employees = await _employeeService.SearchAsync(searchKey);
             foreach (var employee in employees)
             {
-                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
+                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}");
             }
         }
         public async Task GetByAgeAsync()
