@@ -28,7 +28,7 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
             }
-        }
+        }//+
         public async Task GetByIdAsync()
         {
             Console.WriteLine("Enter Employee Id:");
@@ -104,6 +104,13 @@ namespace CompanyApp.Controllers
                     goto Age;
                 }
 
+                if (age > 65)
+                {
+                    Console.WriteLine("Employee must be 65 years old or younger. Please enter a valid age.");
+                    goto Age;
+                }
+
+
             Address:
                 Console.WriteLine("Enter Employee Address:");
                 string address = Console.ReadLine();
@@ -155,7 +162,7 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
-        }
+        }//+
         public async Task DeleteAsync()
         {
             Console.WriteLine("Enter Employee Id for delete:");
@@ -238,43 +245,128 @@ namespace CompanyApp.Controllers
 
         public async Task UpdateAsync()
         {
-            Console.WriteLine("Enter Employee Id for update:");
-            int id = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter new Name:");
-            string newName = Console.ReadLine();
-
-            Console.WriteLine("Enter new Surname:");
-            string newSurname = Console.ReadLine();
-
-            Console.WriteLine("Enter new Age:");
-            int newAge = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter new Address:");
-            string newAddress = Console.ReadLine();
-
-            Console.WriteLine("Enter new Department Id:");
-            int newDepartmentId = int.Parse(Console.ReadLine());
-
-            var employee = new Employee
-            {
-                Name = newName,
-                Surname = newSurname,
-                Age = newAge,
-                Address = newAddress,
-                DepartmentId = newDepartmentId
-            };
-
             try
             {
-                await _employeeService.UpdateAsync(id, employee);
-                Console.WriteLine("Employee updated successfully!");
+                Console.WriteLine("EMPLOYEES LIST");
+
+                IEmployeeService employeeService = new EmployeeService();
+                var employees = await employeeService.GetAllAsync();
+
+                if (employees.ToList().Count > 0)
+                {
+                    foreach (var employee in employees)
+                    {
+                        Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Address: {employee.Address}, DepartmentId: {employee.DepartmentId}");
+                    }
+
+                    Console.WriteLine("Enter Employee Id for update:");
+                    int id;
+                    while (true)
+                    {
+                        string idInput = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(idInput) || !int.TryParse(idInput, out id))
+                        {
+                            Console.WriteLine("Employee Id cannot be empty. Please enter a valid Id.");
+                            continue;
+                        }
+
+                        var employeeToEdit = await employeeService.GetByIdAsync(id); 
+
+                        if (employeeToEdit == null)
+                        {
+                            Console.WriteLine("Employee not found! Please enter a valid Id.");
+                            continue;
+                        }
+
+                        Console.WriteLine("Enter new Name:");
+                    Name:
+                        string newName = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newName))
+                        {
+                            newName = employeeToEdit.Name;
+                        }
+                        else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
+                        {
+                            Console.WriteLine("Name can only contain letters and spaces. Please try again.");
+                            goto Name;
+                        }
+
+                        employeeToEdit.Name = newName;
+
+                    Surname:
+                        Console.WriteLine("Enter new Surname:");
+                        string newSurname = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newSurname))
+                        {
+                            newSurname = employeeToEdit.Surname;
+                        }
+
+                        employeeToEdit.Surname = newSurname;
+
+                    Age:
+                        Console.WriteLine("Enter new Age:");
+                        string ageInput = Console.ReadLine();
+                        int newAge = employeeToEdit.Age;
+
+                        if (string.IsNullOrWhiteSpace(ageInput))
+                        {
+                            newAge = employeeToEdit.Age;
+                        }
+                        else if (int.TryParse(ageInput, out int parsedAge) && parsedAge >= 18 && parsedAge <= 65)
+                        {
+                            newAge = parsedAge;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Age must be between 18 and 65. Please enter a valid age.");
+                            goto Age;
+                        }
+
+                        employeeToEdit.Age = newAge;
+
+
+
+                    Address:
+                        Console.WriteLine("Enter new Address:");
+                        string newAddress = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newAddress))
+                        {
+                            newAddress = employeeToEdit.Address;
+                        }
+
+                        employeeToEdit.Address = newAddress;
+
+                    DepartmentId:
+                        Console.WriteLine("Enter new Department Id:");
+                        string departmentIdInput = Console.ReadLine();
+                        int newDepartmentId = employeeToEdit.DepartmentId;
+
+                        if (!string.IsNullOrWhiteSpace(departmentIdInput) && int.TryParse(departmentIdInput, out int parsedDepartmentId))
+                        {
+                            newDepartmentId = parsedDepartmentId;
+                        }
+
+                        employeeToEdit.DepartmentId = newDepartmentId;
+
+                        await employeeService.UpdateAsync(id, employeeToEdit);
+
+                        Console.WriteLine("Employee updated successfully!");
+                        break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No employees available to edit.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-        }
+        }//+
 
     }
 }

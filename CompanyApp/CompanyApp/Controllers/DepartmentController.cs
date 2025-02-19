@@ -64,9 +64,6 @@ namespace CompanyApp.Controllers
             }
         }
 
-
-
-
         public async Task DeleteAsync()
         {
             Console.WriteLine("Enter department Id for delete:");

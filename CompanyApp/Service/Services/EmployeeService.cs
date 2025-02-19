@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Repository.Helpers.Exceptions;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Service.Services
@@ -71,7 +73,31 @@ namespace Service.Services
             var existingEmployee = await _employeeRepo.GetByIdAsync(id);
             if (existingEmployee == null)
             {
-                throw new Exception("Employee not found!");
+                throw new NotFoundException("Employee not found!");
+            }
+
+            if (string.IsNullOrWhiteSpace(employee.Name))
+            {
+                throw new ArgumentException("Name is required.");
+            }
+            if (!Regex.IsMatch(employee.Name, @"^[a-zA-Z\s]+$"))
+            {
+                throw new ArgumentException("Name can only contain letters and spaces.");
+            }
+
+            if (string.IsNullOrWhiteSpace(employee.Surname))
+            {
+                throw new ArgumentException("Surname is required.");
+            }
+
+            if (employee.Age < 18)
+            {
+                throw new ArgumentException("Age must be at least 18.");
+            }
+
+            if (string.IsNullOrWhiteSpace(employee.Address))
+            {
+                throw new ArgumentException("Address is required.");
             }
 
             existingEmployee.Name = employee.Name;
@@ -82,5 +108,6 @@ namespace Service.Services
 
             await _employeeRepo.UpdateAsync(existingEmployee);
         }
+
     }
 }
