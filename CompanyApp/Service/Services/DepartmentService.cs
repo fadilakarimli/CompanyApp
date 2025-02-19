@@ -1,4 +1,6 @@
 ﻿using Domain.Entities;
+using Repository.Helpers;
+using Repository.Helpers.Exceptions;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
@@ -12,37 +14,49 @@ namespace Service.Services
 {
     public class DepartmentService : IDepartmentService
     {
-        private readonly IDeparmentRepository _deparmentRepo;
+        private readonly IDeparmentRepository _departmentRepo;
         public DepartmentService()
         {
-            _deparmentRepo = new DepartmentRepository();    
+            _departmentRepo = new DepartmentRepository();    
         }
         public async Task CreateAsync(Department department)
         {
-            await _deparmentRepo.CreateAsync(department);
+            await _departmentRepo.CreateAsync(department);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var exsitDepartment = await _deparmentRepo.GetByIdAsync(id);
-            await _deparmentRepo.DeleteAsync(exsitDepartment);
+            var exsitDepartment = await _departmentRepo.GetByIdAsync(id);
+            await _departmentRepo.DeleteAsync(exsitDepartment);
         }
 
         public async Task<IEnumerable<Department>> GetAllAsync()
         {
-            return await _deparmentRepo.GetAllAsync();
+            return await _departmentRepo.GetAllAsync();
         }
 
         public async Task<Department> GetByIdAsync(int id)
         {
-            return await _deparmentRepo.GetByIdAsync(id);
+            return await _departmentRepo.GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<Department>> SearchAsync(string name)
         {
-            return await _deparmentRepo.SearchAsync(name);
+            return await _departmentRepo.SearchAsync(name);
         }
 
-       
+        public async  Task UpdateAsync(int id, Department department)
+        {
+            var existingDepartment = await _departmentRepo.GetByIdAsync(id);
+            if (existingDepartment == null)
+            {
+                throw new NotFoundException(ResponseMessages.DataNotFound);
+            }
+
+            existingDepartment.Name = department.Name;
+            existingDepartment.Capacity = department.Capacity;
+
+            await _departmentRepo.UpdateAsync(existingDepartment);
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Service.Services.Interfaces
         Task CreateAsync(Employee employee);
         Task<Employee> GetByIdAsync(int id);
         Task<IEnumerable<Employee>> GetAllAsync();
-        //Task UpdateAsync(int id, Employee employee);
+        Task UpdateAsync(int id, Employee employee);
         Task DeleteAsync(int id);
         Task<IEnumerable<Employee>> GetByAgeAsync(int age);
         Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId);

@@ -66,5 +66,21 @@ namespace Service.Services
             return await _employeeRepo.GetByDepartmentIdAsync(departmentId);
         }
 
+        public async Task UpdateAsync(int id, Employee employee)
+        {
+            var existingEmployee = await _employeeRepo.GetByIdAsync(id);
+            if (existingEmployee == null)
+            {
+                throw new Exception("Employee not found!");
+            }
+
+            existingEmployee.Name = employee.Name;
+            existingEmployee.Surname = employee.Surname;
+            existingEmployee.Age = employee.Age;
+            existingEmployee.Address = employee.Address;
+            existingEmployee.DepartmentId = employee.DepartmentId;
+
+            await _employeeRepo.UpdateAsync(existingEmployee);
+        }
     }
 }

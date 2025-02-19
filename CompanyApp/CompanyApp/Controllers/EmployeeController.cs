@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CompanyApp.Controllers
@@ -28,7 +29,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
             }
         }
-
         public async Task GetByIdAsync()
         {
             Console.WriteLine("Enter Employee Id:");
@@ -44,7 +44,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine("Employee not found.");
             }
         }
-
         public async Task CreateAsync()
         {
             try
@@ -63,22 +62,32 @@ namespace CompanyApp.Controllers
                     Console.WriteLine($"Id: {department.Id}, Name: {department.Name}");
                 }
 
+            Name:
                 Console.WriteLine("Enter Employee Name:");
                 string name = Console.ReadLine();
+
                 if (string.IsNullOrWhiteSpace(name))
                 {
                     Console.WriteLine("Name is required.");
-                    return;
+                    goto Name;
+                }
+                if (!Regex.IsMatch(name, @"^[a-zA-Z\s]+$"))
+                {
+                    Console.WriteLine("Employee name can only contain letters and spaces. Please try again.");
+                    goto Name;
                 }
 
+            Surname:
                 Console.WriteLine("Enter Employee Surname:");
                 string surname = Console.ReadLine();
+
                 if (string.IsNullOrWhiteSpace(surname))
                 {
                     Console.WriteLine("Surname is required.");
-                    return;
+                    goto Surname;
                 }
 
+            Age:
                 Console.WriteLine("Enter Employee Age:");
                 string ageInput = Console.ReadLine();
                 int age;
@@ -86,17 +95,26 @@ namespace CompanyApp.Controllers
                 if (!int.TryParse(ageInput, out age) || age <= 0)
                 {
                     Console.WriteLine("Invalid age. Please enter a valid age.");
-                    return;
+                    goto Age;
                 }
 
+                if (age < 18)
+                {
+                    Console.WriteLine("Employee must be at least 18 years old. Please enter a valid age.");
+                    goto Age;
+                }
+
+            Address:
                 Console.WriteLine("Enter Employee Address:");
                 string address = Console.ReadLine();
+
                 if (string.IsNullOrWhiteSpace(address))
                 {
                     Console.WriteLine("Address is required.");
-                    return;
+                    goto Address;
                 }
 
+            DepartmentId:
                 Console.WriteLine("Enter Department Id for the employee:");
                 int departmentId;
                 Department selectedDepartment = null;
@@ -110,11 +128,13 @@ namespace CompanyApp.Controllers
                         if (selectedDepartment == null)
                         {
                             Console.WriteLine("Department Id not found. Please enter a valid Department Id.");
+                            goto DepartmentId;
                         }
                     }
                     else
                     {
                         Console.WriteLine("Invalid input for Department Id. Please enter a valid Id.");
+                        goto DepartmentId;
                     }
                 }
 
@@ -136,12 +156,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-
-
-
-
         public async Task DeleteAsync()
         {
             Console.WriteLine("Enter Employee Id for delete:");
@@ -150,7 +164,6 @@ namespace CompanyApp.Controllers
             await _employeeService.DeleteAsync(id);
             Console.WriteLine("Employee deleted successfully.");
         }
-
         public async Task SearchAsync()
         {
             Console.WriteLine("Enter name or surname to search:");
@@ -162,7 +175,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
             }
         }
-
         public async Task GetByAgeAsync()
         {
             Console.WriteLine("Enter Employee Age:");
@@ -174,7 +186,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}");
             }
         }
-
         public async Task GetAllDepartmentNameAsync()
         {
             Console.WriteLine("Enter Department Name for Employees:");
@@ -197,10 +208,10 @@ namespace CompanyApp.Controllers
         }
         public async Task GetByDepartmentIdAsync()
         {
-            Console.WriteLine("Enter Department ID:");
+            Console.WriteLine("Enter Department Id:");
             if (!int.TryParse(Console.ReadLine(), out int departmentId))
             {
-                Console.WriteLine("Invalid Department ID.");
+                Console.WriteLine("Invalid Department Id.:");
                 return;
             }
 
@@ -212,20 +223,57 @@ namespace CompanyApp.Controllers
                 return;
             }
 
-            Console.WriteLine($"Employees in Department ID {departmentId}:");
+            Console.WriteLine($"Employees in Department Id {departmentId}:");
             foreach (var employee in employees)
             {
                 Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, " +
                     $"Department: {(employee.Department != null ? employee.Department.Name : "Not")}");
             }
         }
-
-
-
         public async Task GetEmployeesCountAsync()
         {
             var count = await _employeeService.GetEmployeesCountAsync();
             Console.WriteLine($"Total count for Employees: {count}");
+        }
+
+        public async Task UpdateAsync()
+        {
+            Console.WriteLine("Enter Employee Id for update:");
+            int id = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter new Name:");
+            string newName = Console.ReadLine();
+
+            Console.WriteLine("Enter new Surname:");
+            string newSurname = Console.ReadLine();
+
+            Console.WriteLine("Enter new Age:");
+            int newAge = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter new Address:");
+            string newAddress = Console.ReadLine();
+
+            Console.WriteLine("Enter new Department Id:");
+            int newDepartmentId = int.Parse(Console.ReadLine());
+
+            var employee = new Employee
+            {
+                Name = newName,
+                Surname = newSurname,
+                Age = newAge,
+                Address = newAddress,
+                DepartmentId = newDepartmentId
+            };
+
+            try
+            {
+                await _employeeService.UpdateAsync(id, employee);
+                Console.WriteLine("Employee updated successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
     }
