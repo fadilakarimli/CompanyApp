@@ -18,15 +18,22 @@ namespace Repository.Repositories
 
         public async Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId)
         {
-            return await _context.Employees.Where(e => e.DepartmentId == departmentId).ToListAsync();
+            return await _context.Employees
+                .Include(e => e.Department) 
+                .Where(e => e.DepartmentId == departmentId)
+                .ToListAsync();
         }
 
-        public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync()
+
+        public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync(string name)
         {
             return await _context.Employees
                 .Include(e => e.Department)
+                .Where(e => e.Department != null && e.Department.Name == name)
                 .ToListAsync();
         }
+
+
 
         public async Task<IEnumerable<Employee>> SearchAsync(string key)
         {

@@ -177,12 +177,50 @@ namespace CompanyApp.Controllers
 
         public async Task GetAllDepartmentNameAsync()
         {
-            var employees = await _employeeService.GetAllDepartmentNameAsync();
+            Console.WriteLine("Enter Department Name for Employees:");
+            string departmentName = Console.ReadLine();
+
+            var employees = await _employeeService.GetAllDepartmentNameAsync(departmentName);
+
+            if (!employees.Any())
+            {
+                Console.WriteLine("No employees found this department.");
+                return;
+            }
+
+            Console.WriteLine($"Employees in {departmentName} Department:");
             foreach (var employee in employees)
             {
-                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Department: {employee.Department.Name}");
+                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, " +
+                    $"Department: {(employee.Department != null ? employee.Department.Name : "Not")}");
             }
         }
+        public async Task GetByDepartmentIdAsync()
+        {
+            Console.WriteLine("Enter Department ID:");
+            if (!int.TryParse(Console.ReadLine(), out int departmentId))
+            {
+                Console.WriteLine("Invalid Department ID.");
+                return;
+            }
+
+            var employees = await _employeeService.GetByDepartmentIdAsync(departmentId);
+
+            if (!employees.Any())
+            {
+                Console.WriteLine("No employees found in this department.");
+                return;
+            }
+
+            Console.WriteLine($"Employees in Department ID {departmentId}:");
+            foreach (var employee in employees)
+            {
+                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, " +
+                    $"Department: {(employee.Department != null ? employee.Department.Name : "Not")}");
+            }
+        }
+
+
 
         public async Task GetEmployeesCountAsync()
         {

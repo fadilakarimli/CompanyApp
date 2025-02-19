@@ -11,7 +11,7 @@ namespace Repository.Repositories.Interfaces
     {
         Task<IEnumerable<Employee>> GetByAgeAsync(int age);
         Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId);
-        Task<IEnumerable<Employee>> GetAllDepartmentNameAsync();
+        Task<IEnumerable<Employee>> GetAllDepartmentNameAsync(string name);
         Task<IEnumerable<Employee>> SearchAsync(string key);
         Task<int> GetEmployeesCountAsync();
     }
