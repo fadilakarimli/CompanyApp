@@ -68,7 +68,7 @@
               "RelativeDocumentMoniker": "CompanyApp\\Controllers\\EmployeeController.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "CompanyApp\\Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAANkAAAAAAAAAAAAUwPwBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALYBAAAAAAAAAAAcwNUBAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-19T08:45:31.422Z",
               "EditorCaption": ""
@@ -83,8 +83,7 @@
               "RelativeToolTip": "Repository\\Repositories\\EmployeeRepository.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T12:11:18.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T12:11:18.092Z"
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "CompanyApp\\Controllers\\DepartmentController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAA6wFMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:00:33.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:00:33.057Z"
             },
             {
               "$type": "Document",
@@ -109,8 +107,7 @@
               "RelativeToolTip": "Service\\Services\\DepartmentService.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAA3wDsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:03:19.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:03:19.491Z"
             },
             {
               "$type": "Document",
@@ -122,8 +119,7 @@
               "RelativeToolTip": "Service\\Services\\EmployeeService.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAYwCgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T08:45:22.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T08:45:22.171Z"
             },
             {
               "$type": "Document",
@@ -135,8 +131,7 @@
               "RelativeToolTip": "Service\\Services\\Interfaces\\IEmployeeService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T05:20:22.128Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-20T05:20:22.128Z"
             },
             {
               "$type": "Document",
@@ -148,8 +143,7 @@
               "RelativeToolTip": "Repository\\Repositories\\BaseRepository.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAiwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:09:40.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:09:40.156Z"
             },
             {
               "$type": "Document",
@@ -161,8 +155,7 @@
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:09:26.572Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T10:09:26.572Z"
             },
             {
               "$type": "Document",

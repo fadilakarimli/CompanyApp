@@ -454,7 +454,7 @@ namespace CompanyApp.Controllers
                         }
                         employeeToEdit.Surname = newSurname;
 
-                        Console.WriteLine("Enter new Age:");
+                        EnterAge: Console.WriteLine("Enter new Age:");
                         string ageInput = Console.ReadLine();
                         int newAge = employeeToEdit.Age;
                         if (string.IsNullOrWhiteSpace(ageInput))
@@ -468,6 +468,7 @@ namespace CompanyApp.Controllers
                         else
                         {
                             Console.WriteLine("Age must be between 18 and 65. Please enter a valid age.");
+                            goto EnterAge;
                         }
                         employeeToEdit.Age = newAge;
 
