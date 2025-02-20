@@ -104,7 +104,7 @@ namespace CompanyApp.Controllers
                     Console.WriteLine("Enter Department Id to delete:");
                     string input = Console.ReadLine();
                     int id;
-
+                             
                     if (!int.TryParse(input, out id))
                     {
                         Console.WriteLine("Invalid input! Please enter a valid numeric Id.");
