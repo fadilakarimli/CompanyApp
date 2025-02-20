@@ -208,7 +208,7 @@ namespace CompanyApp.Controllers
             }
         }//+
 
-        public async Task UpdateAsync()
+        public async Task UpdateAsync()//+
         {
             try
             {
@@ -216,7 +216,7 @@ namespace CompanyApp.Controllers
 
                 var departments = await _departmentService.GetAllAsync();
 
-                if (departments.ToList().Count > 0)
+                if (departments.Any()) 
                 {
                     foreach (var department in departments)
                     {
@@ -242,40 +242,70 @@ namespace CompanyApp.Controllers
                             continue;
                         }
 
-                        Console.WriteLine("Enter new Name:");
-                    Name:
-                        string newName = Console.ReadLine();
+                        string newName;
+                        bool isNameExists = false;
 
-                        if (string.IsNullOrWhiteSpace(newName))
+                        do
                         {
-                            newName = departmentToEdit.Name;
+                            EnterName: Console.WriteLine("Enter new Name (leave empty to keep current name):");
+
+                            newName = Console.ReadLine();
+
+                            if (string.IsNullOrWhiteSpace(newName))
+                            {
+                                newName = departmentToEdit.Name;
+                                break;
+                            }
+
+                            else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
+                            {
+                                Console.WriteLine("Name can only contain letters and spaces. Please try again.");
+                                continue;
+                            }
+                            else
+                            {
+                                isNameExists = departments.Any(d =>
+                                    d.Name.Equals(newName, StringComparison.OrdinalIgnoreCase) && d.Id != departmentToEdit.Id);
+
+                                if (isNameExists)
+                                {
+                                    Console.WriteLine($"This department name '{newName}' already exists. Please enter a different name.");
+                                }
+                                else if (departmentToEdit.Name.Equals(newName, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    Console.WriteLine("You cannot update the department with the same name.");
+                                    goto EnterName;
+                                }
+                            }
                         }
-                        else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
-                        {
-                            Console.WriteLine("Name can only contain letters and spaces. Please try again.");
-                            goto Name;
-                        }
+                        while (isNameExists);
 
                         departmentToEdit.Name = newName;
 
-                    Capacity:
-                        Console.WriteLine("Enter new Capacity:");
-                        string capacityInput = Console.ReadLine();
                         int newCapacity = departmentToEdit.Capacity;
+                        bool isValidCapacity;
+                        do
+                        {
+                            Console.WriteLine("Enter new Capacity:");
+                            string capacityInput = Console.ReadLine();
 
-                        if (string.IsNullOrWhiteSpace(capacityInput))
-                        {
-                            newCapacity = departmentToEdit.Capacity;
+                            if (string.IsNullOrWhiteSpace(capacityInput))
+                            {
+                                newCapacity = departmentToEdit.Capacity;
+                                isValidCapacity = true;
+                            }
+                            else if (int.TryParse(capacityInput, out int parsedCapacity) && parsedCapacity > 0)
+                            {
+                                newCapacity = parsedCapacity;
+                                isValidCapacity = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Capacity must be a positive number. Please enter a valid number for capacity.");
+                                isValidCapacity = false;
+                            }
                         }
-                        else if (int.TryParse(capacityInput, out int parsedCapacity) && parsedCapacity > 0)
-                        {
-                            newCapacity = parsedCapacity;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Capacity must be a positive number. Please enter a valid capacity.");
-                            goto Capacity;
-                        }
+                        while (!isValidCapacity);
 
                         departmentToEdit.Capacity = newCapacity;
 
@@ -294,7 +324,23 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
-        }//+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
