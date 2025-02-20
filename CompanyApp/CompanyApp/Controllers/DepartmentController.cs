@@ -260,7 +260,7 @@ namespace CompanyApp.Controllers
                             else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
                             {
                                 Console.WriteLine("Name can only contain letters and spaces. Please try again.");
-                                continue;
+                                 goto EnterName;
                             }
                             else
                             {
