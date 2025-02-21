@@ -15,7 +15,6 @@ namespace Repository.Repositories
         {
             return await _context.Employees.Where(e => e.Age == age).ToListAsync();
         }
-
         public async Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId)
         {
             return await _context.Employees
@@ -23,8 +22,6 @@ namespace Repository.Repositories
                 .Where(e => e.DepartmentId == departmentId)
                 .ToListAsync();
         }
-
-
         public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync(string name)
         {
             return await _context.Employees
@@ -32,16 +29,12 @@ namespace Repository.Repositories
                 .Where(e => e.Department != null && e.Department.Name == name)
                 .ToListAsync();
         }
-
-
-
         public async Task<IEnumerable<Employee>> SearchAsync(string key)
         {
             return await _context.Employees
                 .Where(e => e.Name.Contains(key) || e.Surname.Contains(key))
                 .ToListAsync();
         }
-
         public async Task<int> GetEmployeesCountAsync()
         {
             return await _context.Employees.CountAsync();

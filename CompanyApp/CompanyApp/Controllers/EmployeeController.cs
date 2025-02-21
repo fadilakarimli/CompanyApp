@@ -20,7 +20,6 @@ namespace CompanyApp.Controllers
             _employeeService = new EmployeeService();
             _departmentService = new DepartmentService();
         }
-           
         public async Task GetAllAsync()
         {
             var employees = await _employeeService.GetAllAsync();
@@ -59,7 +58,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
         public async Task CreateAsync()
         {
             try
@@ -220,7 +218,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
-
         public async Task SearchAsync()//+
         {
         EnterSearch:
@@ -257,7 +254,6 @@ namespace CompanyApp.Controllers
                 goto EnterSearch;
             }
         }
-
         public async Task GetByAgeAsync()
         {
         EnterAge:
@@ -311,8 +307,6 @@ namespace CompanyApp.Controllers
                 goto EnterAge;
             }
         }//-
-
-
         public async Task GetAllDepartmentNameAsync()//+
         {
             var allDepartments = await _departmentService.GetAllAsync();
@@ -355,8 +349,6 @@ namespace CompanyApp.Controllers
                     $"Department: {(employee.Department != null ? employee.Department.Name : "NotFound")}");
             }
         }
-
-
         public async Task GetByDepartmentIdAsync()//+
         {
         EnterDepartmentId:
@@ -387,13 +379,11 @@ namespace CompanyApp.Controllers
                     $"Department: {(employee.Department != null ? employee.Department.Name : "Not Found")}");
             }
         }
-
         public async Task GetEmployeesCountAsync()
         {
             var count = await _employeeService.GetEmployeesCountAsync();
             Console.WriteLine($"Total count for Employees: {count}");
         }//+
-
         public async Task UpdateAsync()
         {
             try
@@ -547,9 +537,5 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-
-
     }
 }

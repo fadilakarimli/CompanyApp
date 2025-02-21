@@ -17,7 +17,6 @@ namespace CompanyApp.Controllers
         {
             _departmentService = new DepartmentService();
         }
-
         public async Task CreateAsync()
         {
             try
@@ -170,7 +169,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine($"Id: {department.Id}, Name: {department.Name} , {department.Capacity}");
             }
         }//+
-
         public async Task SearchAsync()
         {
         EnterName:
@@ -207,7 +205,6 @@ namespace CompanyApp.Controllers
                 goto EnterName;
             }
         }//+
-
         public async Task UpdateAsync()//+
         {
             try
@@ -325,25 +322,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

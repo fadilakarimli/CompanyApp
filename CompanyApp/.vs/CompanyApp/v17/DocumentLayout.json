@@ -3,44 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\helpers\\menues\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\helpers\\menues\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\helpers\\menues\\loginregistermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\helpers\\menues\\loginregistermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\companyapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F0B0B75-E44F-46D5-9D78-1D0E7948E192}|CompanyApp\\CompanyApp.csproj|solutionrelative:companyapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D46A5F8-3944-4DB6-A9E2-D456D4E9EE12}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D46A5F8-3944-4DB6-A9E2-D456D4E9EE12}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\interfaces\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\helpers\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\helpers\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\interfaces\\ideparmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,8 +43,52 @@
       "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16442E75-4650-46C3-AE1B-4B558D453F5A}|Service\\Service.csproj|solutionrelative:service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\companyapp\\companyapp\\repository\\helpers\\responsemessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{336190DD-F532-4188-AB83-5A3AA932B325}|Repository\\Repository.csproj|solutionrelative:repository\\helpers\\responsemessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,155 +98,150 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "CompanyApp\\Controllers\\EmployeeController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "CompanyApp\\Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAgwGYBAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "LoginRegisterMenu.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Helpers\\Menues\\LoginRegisterMenu.cs",
+              "RelativeDocumentMoniker": "CompanyApp\\Helpers\\Menues\\LoginRegisterMenu.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Helpers\\Menues\\LoginRegisterMenu.cs",
+              "RelativeToolTip": "CompanyApp\\Helpers\\Menues\\LoginRegisterMenu.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwJEAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T08:45:31.422Z",
+              "WhenOpened": "2025-02-21T08:27:21.269Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IEmployeeService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IEmployeeService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IEmployeeService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IEmployeeService.cs",
-              "RelativeToolTip": "Service\\Services\\Interfaces\\IEmployeeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Helpers\\Menues\\MainMenu.cs",
+              "RelativeDocumentMoniker": "CompanyApp\\Helpers\\Menues\\MainMenu.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Helpers\\Menues\\MainMenu.cs",
+              "RelativeToolTip": "CompanyApp\\Helpers\\Menues\\MainMenu.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T05:20:22.128Z",
+              "WhenOpened": "2025-02-21T08:28:00.464Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EmployeeService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\EmployeeService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\EmployeeService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\EmployeeService.cs",
-              "RelativeToolTip": "Service\\Services\\EmployeeService.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAwCgAAAANAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "CompanyApp\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\UserController.cs",
+              "RelativeToolTip": "CompanyApp\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowBcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T08:45:22.171Z",
+              "WhenOpened": "2025-02-21T05:25:40.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "CompanyApp\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "CompanyApp\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwBsCAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T05:11:18.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "DepartmentController.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\DepartmentController.cs",
               "RelativeDocumentMoniker": "CompanyApp\\Controllers\\DepartmentController.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Controllers\\DepartmentController.cs",
               "RelativeToolTip": "CompanyApp\\Controllers\\DepartmentController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAowEYBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:00:33.057Z",
+              "WhenOpened": "2025-02-21T05:24:14.182Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Program.cs",
+              "RelativeDocumentMoniker": "CompanyApp\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp\\Program.cs",
+              "RelativeToolTip": "CompanyApp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T05:36:50.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Domain\\Entities\\User.cs",
+              "RelativeToolTip": "Domain\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T13:24:58.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "IBaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IBaseRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:09:26.572Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BaseRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\BaseRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\BaseRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\BaseRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\BaseRepository.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAiwCoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:09:40.156Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DepartmentService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\DepartmentService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\DepartmentService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\DepartmentService.cs",
-              "RelativeToolTip": "Service\\Services\\DepartmentService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:03:19.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IDepartmentService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IDepartmentService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IDepartmentService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IDepartmentService.cs",
-              "RelativeToolTip": "Service\\Services\\Interfaces\\IDepartmentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T10:03:17.289Z"
+              "WhenOpened": "2025-02-21T05:03:27.048Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "NotFoundException.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Helpers\\Exceptions\\NotFoundException.cs",
-              "RelativeDocumentMoniker": "Repository\\Helpers\\Exceptions\\NotFoundException.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Helpers\\Exceptions\\NotFoundException.cs",
-              "RelativeToolTip": "Repository\\Helpers\\Exceptions\\NotFoundException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T07:50:47.089Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\EmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\EmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\EmployeeRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\EmployeeRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T12:11:18.092Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "IDeparmentRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IDeparmentRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IDeparmentRepository.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IDeparmentRepository.cs",
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IDeparmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T13:24:49.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T11:49:49.248Z"
+              "WhenOpened": "2025-02-20T19:05:15.788Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "IEmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "BaseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\BaseRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\BaseRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\BaseRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\BaseRepository.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAYwCQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T11:41:25.26Z"
+              "WhenOpened": "2025-02-21T05:06:53.677Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -220,9 +251,140 @@
               "RelativeDocumentMoniker": "Repository\\Repositories\\DepartmentRepository.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\DepartmentRepository.cs",
               "RelativeToolTip": "Repository\\Repositories\\DepartmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T13:24:24.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IEmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:05:27.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:05:50.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IDepartmentService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IDepartmentService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IDepartmentService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IDepartmentService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IDepartmentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T11:44:36.611Z"
+              "WhenOpened": "2025-02-21T13:23:53.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:07:10.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DepartmentService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\DepartmentService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\DepartmentService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\DepartmentService.cs",
+              "RelativeToolTip": "Service\\Services\\DepartmentService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T07:53:48.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\EmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Repositories\\EmployeeRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\EmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:06:06.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Service\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:09:00.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\UserService.cs",
+              "RelativeToolTip": "Service\\Services\\UserService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:07:33.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Service\\Services\\Interfaces\\IEmployeeService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IEmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T19:08:58.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ResponseMessages.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Helpers\\ResponseMessages.cs",
+              "RelativeDocumentMoniker": "Repository\\Helpers\\ResponseMessages.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\CompanyApp\\CompanyApp\\Repository\\Helpers\\ResponseMessages.cs",
+              "RelativeToolTip": "Repository\\Helpers\\ResponseMessages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T13:09:19.699Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -25,18 +25,15 @@ namespace Repository.Repositories
             await _dbset.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
-
         public async Task DeleteAsync(T entity)
         {
             _dbset.Remove(entity);
             await _context.SaveChangesAsync();
         }
-
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbset.ToListAsync();
         }
-
         public async Task<T> GetByIdAsync(int id)
         {
             return await _dbset.FindAsync(id);
