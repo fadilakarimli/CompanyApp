@@ -124,11 +124,25 @@ namespace CompanyApp.Controllers
             Address:
                 Console.WriteLine("Enter Employee Address:");
                 string address = Console.ReadLine();
+
                 if (string.IsNullOrWhiteSpace(address))
                 {
                     Console.WriteLine("Address is required.");
                     goto Address;
                 }
+
+                if (!Regex.IsMatch(address, @"^[a-zA-Z0-9\s]+$"))
+                {
+                    Console.WriteLine("Address can only contain letters, numbers, and spaces. Please try again.");
+                    goto Address;
+                }
+
+                if (address.All(char.IsDigit))
+                {
+                    Console.WriteLine("Address cannot be only numbers. Please enter a valid address.");
+                    goto Address;
+                }
+
             DepartmentId:
                 Console.WriteLine("Enter Department Id for the employee:");
                 int departmentId;
@@ -421,6 +435,7 @@ namespace CompanyApp.Controllers
                     string newName;
                     do
                     {
+                    EnterName:
                         Console.WriteLine("Enter new Name:");
                         newName = Console.ReadLine();
 
@@ -433,13 +448,13 @@ namespace CompanyApp.Controllers
                         if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
                         {
                             Console.WriteLine("Name can only contain letters and spaces. Please try again.");
-                            continue;
+                            goto EnterName;
                         }
 
                         if (employees.Any(e => e.Name.Equals(newName, StringComparison.OrdinalIgnoreCase) && e.Id != employeeToEdit.Id))
                         {
                             Console.WriteLine($"This name '{newName}' already exists for another employee. Please enter a different name.");
-                            continue;
+                            goto EnterName;
                         }
                     } while (false);
 
@@ -448,6 +463,7 @@ namespace CompanyApp.Controllers
                     string newSurname;
                     do
                     {
+                     EnterSurname:
                         Console.WriteLine("Enter new Surname:");
                         newSurname = Console.ReadLine();
 
@@ -460,7 +476,7 @@ namespace CompanyApp.Controllers
                         if (!Regex.IsMatch(newSurname, @"^[a-zA-Z\s]+$"))
                         {
                             Console.WriteLine("Surname can only contain letters and spaces. Please try again.");
-                            continue;
+                            goto EnterSurname;
                         }
                     } while (false);
 
@@ -488,11 +504,20 @@ namespace CompanyApp.Controllers
 
                     employeeToEdit.Age = newAge;
 
-                    Console.WriteLine("Enter new Address");
+                    Console.WriteLine("Enter new Address:");
+                EnterAddress:
                     string newAddress = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(newAddress))
                     {
                         newAddress = employeeToEdit.Address;
+                    }
+                    else
+                    {
+                        if (!Regex.IsMatch(newAddress, @"^[a-zA-Z0-9\s]+$") || newAddress.All(char.IsDigit))
+                        {
+                            Console.WriteLine("Address must contain letters and numbers, and cannot be only digits. Please try again.");
+                            goto EnterAddress;
+                        }
                     }
                     employeeToEdit.Address = newAddress;
 
@@ -505,7 +530,7 @@ namespace CompanyApp.Controllers
                     int newDepartmentId = employeeToEdit.DepartmentId;
                     while (true)
                     {
-                        Console.WriteLine("\nEnter new Department Id:");
+                        Console.WriteLine("Enter new Department Id:");
                         string departmentIdInput = Console.ReadLine();
 
                         if (string.IsNullOrWhiteSpace(departmentIdInput))
@@ -537,5 +562,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
+
     }
 }
