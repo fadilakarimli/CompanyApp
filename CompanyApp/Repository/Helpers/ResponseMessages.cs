@@ -8,6 +8,9 @@ namespace Repository.Helpers
 {
     public class ResponseMessages
     {
-        public const string DataNotFound = "Data NotFound!.";
+        public const string CreatedSuccess = "Data Sucessfully Created";
+        public const string NotFound = "Data Notfound!";
+        public const string WrongFormat = "Wrong Format Please Try Again or True Format";
+        public const string Invalid = "Invalid,Please choose true format!";
     }
 }

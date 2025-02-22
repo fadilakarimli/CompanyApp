@@ -26,6 +26,10 @@ namespace Service.Services
         public async Task DeleteAsync(int id)
         {
             var exsitDepartment = await _departmentRepo.GetByIdAsync(id);
+            if (exsitDepartment == null)
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
             await _departmentRepo.DeleteAsync(exsitDepartment);
         }
         public async Task<IEnumerable<Department>> GetAllAsync()
@@ -45,7 +49,7 @@ namespace Service.Services
             var existingDepartment = await _departmentRepo.GetByIdAsync(id);
             if (existingDepartment == null)
             {
-                throw new NotFoundException(ResponseMessages.DataNotFound);
+                throw new NotFoundException(ResponseMessages.NotFound);
             }
 
             existingDepartment.Name = department.Name;
