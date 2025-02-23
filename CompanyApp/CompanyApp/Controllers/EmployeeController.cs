@@ -92,6 +92,7 @@ namespace CompanyApp.Controllers
                     Console.WriteLine("Employee name can only contain letters and spaces. Please try again.");
                     goto Name;
                 }
+                name = char.ToUpper(name[0]) + name.Substring(1).ToLower();
             Surname:
                 Console.WriteLine("Enter Employee Surname:");
                 string surname = Console.ReadLine();
@@ -106,6 +107,7 @@ namespace CompanyApp.Controllers
                     Console.WriteLine("Employee surname can only contain letters and spaces. Please try again.");
                     goto Surname;
                 }
+                surname = char.ToUpper(surname[0]) + surname.Substring(1).ToLower();
             Age:
                 Console.WriteLine("Enter Employee Age:");
                 string ageInput = Console.ReadLine();
@@ -451,10 +453,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine("Data not found.");
             }
         }
-
-
-
-
         public async Task GetEmployeesCountAsync()
         {
             var count = await _employeeService.GetEmployeesCountAsync();
@@ -464,12 +462,26 @@ namespace CompanyApp.Controllers
         {
             try
             {
+                Console.WriteLine("DEPARTMENTS LIST");
+
+                IDepartmentService departmentService = new DepartmentService();
+                var departments = await departmentService.GetAllAsync();
+
+                if (!departments.Any())
+                {
+                    Console.WriteLine("No departments available.");
+                    return;
+                }
+
+                foreach (var department in departments)
+                {
+                    Console.WriteLine($"Id: {department.Id}, Name: {department.Name}");
+                }
+
                 Console.WriteLine("EMPLOYEES LIST");
 
                 IEmployeeService employeeService = new EmployeeService();
-                IDepartmentService departmentService = new DepartmentService();
                 var employees = await employeeService.GetAllAsync();
-                var departments = await departmentService.GetAllAsync();
 
                 if (!employees.Any())
                 {
@@ -503,41 +515,49 @@ namespace CompanyApp.Controllers
                     do
                     {
                         Console.WriteLine("Enter new Name:");
-                        newName = Console.ReadLine();
+                        newName = Console.ReadLine()?.Trim();
 
                         if (string.IsNullOrWhiteSpace(newName))
                         {
                             newName = employeeToEdit.Name;
                             break;
                         }
+                        else if (newName == employeeToEdit.Name)
+                        {
+                            Console.WriteLine("You cannot update to the same name. Please enter a new name or leave it empty.");
+                        }
                         else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
                         {
                             Console.WriteLine("Name can only contain letters and spaces. Please try again.");
                         }
-                    } while (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"));
+                    } while (newName == employeeToEdit.Name || !Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"));
 
                     string newSurname;
                     do
                     {
                         Console.WriteLine("Enter new Surname:");
-                        newSurname = Console.ReadLine();
+                        newSurname = Console.ReadLine()?.Trim();
 
                         if (string.IsNullOrWhiteSpace(newSurname))
                         {
                             newSurname = employeeToEdit.Surname;
                             break;
                         }
+                        else if (newSurname == employeeToEdit.Surname)
+                        {
+                            Console.WriteLine("You cannot update to the same surname. Please enter a new surname or leave it empty.");
+                        }
                         else if (!Regex.IsMatch(newSurname, @"^[a-zA-Z\s]+$"))
                         {
                             Console.WriteLine("Surname can only contain letters and spaces. Please try again.");
                         }
-                    } while (!Regex.IsMatch(newSurname, @"^[a-zA-Z\s]+$"));
+                    } while (newSurname == employeeToEdit.Surname || !Regex.IsMatch(newSurname, @"^[a-zA-Z\s]+$"));
 
                     int newAge = employeeToEdit.Age;
                     while (true)
                     {
                         Console.WriteLine("Enter new Age:");
-                        string ageInput = Console.ReadLine();
+                        string ageInput = Console.ReadLine()?.Trim();
 
                         if (string.IsNullOrWhiteSpace(ageInput))
                         {
@@ -558,7 +578,7 @@ namespace CompanyApp.Controllers
                     while (true)
                     {
                         Console.WriteLine("Enter new Address:");
-                        newAddress = Console.ReadLine();
+                        newAddress = Console.ReadLine()?.Trim();
 
                         if (string.IsNullOrWhiteSpace(newAddress))
                         {
@@ -582,7 +602,7 @@ namespace CompanyApp.Controllers
                     int newDepartmentId = employeeToEdit.DepartmentId;
                     while (true)
                     {
-                        Console.WriteLine("Enter new Department Id::");
+                        Console.WriteLine("Enter new Department Id:");
                         string departmentIdInput = Console.ReadLine();
 
                         if (string.IsNullOrWhiteSpace(departmentIdInput))

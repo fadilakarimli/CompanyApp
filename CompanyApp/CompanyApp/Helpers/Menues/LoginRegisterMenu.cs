@@ -86,7 +86,7 @@ namespace CompanyApp.Helpers.Menues
                         {
                             string fullName;
                         FullNameInput:
-                            Console.Write("Enter Full Name for Registration: ");
+                            Console.WriteLine("Enter Full Name for Registration: ");
                             fullName = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(fullName))
@@ -109,7 +109,7 @@ namespace CompanyApp.Helpers.Menues
 
                             string email;
                         EmailInput:
-                            Console.Write("Enter Email for Registration: ");
+                            Console.WriteLine("Enter Email for Registration: ");
                             email = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(email))
@@ -122,10 +122,15 @@ namespace CompanyApp.Helpers.Menues
                                 Console.WriteLine("Email must contain '@'. Please enter again.");
                                 goto EmailInput;
                             }
+                            if (string.IsNullOrWhiteSpace(email) || email == "@" || !email.Contains("@"))
+                            {
+                                Console.WriteLine("Email format is incorrect. Please enter correct format for email.");
+                                goto EmailInput;
+                            }
 
                             string password;
                         PasswordInput:
-                            Console.Write("Enter Password: ");
+                            Console.WriteLine("Enter Password: ");
                             password = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(password))
@@ -142,7 +147,7 @@ namespace CompanyApp.Helpers.Menues
 
                             string confirmPassword;
                         ConfirmPasswordInput:
-                            Console.Write("Confirm Password: ");
+                            Console.WriteLine("Confirm Password: ");
                             confirmPassword = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(confirmPassword))

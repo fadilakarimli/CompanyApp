@@ -65,9 +65,16 @@ namespace CompanyApp.Controllers
                 Console.WriteLine("Email is required. Please enter again.");
                 goto Email;
             }
+
             if (!email.Contains("@"))
             {
                 Console.WriteLine("Email must contain '@'. Please enter again.");
+                goto Email;
+            }
+
+            if (string.IsNullOrWhiteSpace(email) || email == "@" || !email.Contains("@"))
+            {
+                Console.WriteLine("Email format is incorrect. Please enter a valid email.");
                 goto Email;
             }
 
@@ -127,6 +134,7 @@ namespace CompanyApp.Controllers
                 goto FullName;
             }
         }
+
     }
 }
 

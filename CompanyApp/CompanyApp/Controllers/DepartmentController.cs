@@ -41,12 +41,11 @@ namespace CompanyApp.Controllers
             Name:
                 string name = Console.ReadLine();
 
-                if (string.IsNullOrWhiteSpace(name))
+                if (string.IsNullOrWhiteSpace(name) || name.Trim() != name)
                 {
-                    Console.WriteLine("Department name is required.");
+                    Console.WriteLine("Department name cannot be empty. Cannot start or end with spaces. Please enter a valid name.");
                     goto Name;
                 }
-
                 if (!Regex.IsMatch(name, @"^[a-zA-Z\s]+$"))
                 {
                     Console.WriteLine("Department name can only contain letters and spaces. Please try again.");
@@ -267,8 +266,7 @@ namespace CompanyApp.Controllers
                     {
                     EnterName:
                         Console.WriteLine("Enter new Name:");
-
-                        newName = Console.ReadLine();
+                        newName = Console.ReadLine()?.Trim();
 
                         if (string.IsNullOrWhiteSpace(newName))
                         {
