@@ -136,7 +136,7 @@ namespace CompanyApp.Helpers.Menues
 
                             if (password.Length < 6)
                             {
-                                Console.WriteLine("Password must be at least 6 characters long. Please enter again.");
+                                Console.WriteLine("Password must be at least 6 characters. Please enter again.");
                                 goto PasswordInput;
                             }
 

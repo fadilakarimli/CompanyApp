@@ -38,12 +38,24 @@ namespace Service.Services
         }
         public async Task<Department> GetByIdAsync(int id)
         {
-            return await _departmentRepo.GetByIdAsync(id);
+            var department = await _departmentRepo.GetByIdAsync(id);
+            if (department == null)
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+            return department;
         }
+
         public async Task<IEnumerable<Department>> SearchAsync(string name)
         {
-            return await _departmentRepo.SearchAsync(name);
+            var departments = await _departmentRepo.SearchAsync(name);
+            if (departments == null || !departments.Any())
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+            return departments;
         }
+
         public async  Task UpdateAsync(int id, Department department)
         {
             var existingDepartment = await _departmentRepo.GetByIdAsync(id);

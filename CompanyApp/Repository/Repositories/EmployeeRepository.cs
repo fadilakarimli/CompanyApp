@@ -39,5 +39,10 @@ namespace Repository.Repositories
         {
             return await _context.Employees.CountAsync();
         }
+
+        public async Task SaveChangesAsync() 
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

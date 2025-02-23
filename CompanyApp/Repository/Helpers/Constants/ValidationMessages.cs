@@ -11,5 +11,7 @@ namespace Repository.Helpers.Constants
         public const string Required = "Input Required";
         public const string NotEmpty = "Input does not empty";
         public const string WrongFormat = "Try Again this format is wrong!";
+        public const string PasswordOrEmail = "Try Again this format is wrong!";
+        public const string FullName = "FullName is not required!";
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Domain.Entities;
+using Repository.Helpers;
+using Repository.Helpers.Constants;
 using Repository.Helpers.Exceptions;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
@@ -25,8 +27,14 @@ namespace Service.Services
         }
         public async Task<Employee> GetByIdAsync(int id)
         {
-            return await _employeeRepo.GetByIdAsync(id);
+            var employee = await _employeeRepo.GetByIdAsync(id);
+            if (employee == null)
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+            return employee;
         }
+
         public async Task<IEnumerable<Employee>> GetAllAsync()
         {
             return await _employeeRepo.GetAllAsync();
@@ -34,71 +42,115 @@ namespace Service.Services
         public async Task DeleteAsync(int id)
         {
             var existEmployee = await _employeeRepo.GetByIdAsync(id);
-            if (existEmployee != null)
+            if (existEmployee == null)
             {
-                await _employeeRepo.DeleteAsync(existEmployee);
+                throw new NotFoundException(ResponseMessages.NotFound);
             }
+            await _employeeRepo.DeleteAsync(existEmployee);
         }
+
         public async Task<IEnumerable<Employee>> GetByAgeAsync(int age)
         {
-            return await _employeeRepo.GetByAgeAsync(age);
+            var employees = await _employeeRepo.GetByAgeAsync(age);
+
+            if (employees == null || !employees.Any())
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+            return employees;
         }
+
         public async Task<IEnumerable<Employee>> GetAllDepartmentNameAsync(string name)
         {
-            return await _employeeRepo.GetAllDepartmentNameAsync(name);
+            var employees = await _employeeRepo.GetAllDepartmentNameAsync(name);
+
+            if (employees == null || !employees.Any())
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+
+            return employees;
         }
+
         public async Task<IEnumerable<Employee>> SearchAsync(string nameOrSurname)
         {
-            return await _employeeRepo.SearchAsync(nameOrSurname);
+            var employees = await _employeeRepo.SearchAsync(nameOrSurname);
+
+            if (employees == null || !employees.Any())
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+
+            return employees;
         }
+
         public async Task<int> GetEmployeesCountAsync()
         {
-            return await _employeeRepo.GetEmployeesCountAsync();
+            var count = await _employeeRepo.GetEmployeesCountAsync();
+
+            if (count == 0)
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+
+            return count;
         }
+
         public async Task<IEnumerable<Employee>> GetByDepartmentIdAsync(int departmentId)
         {
-            return await _employeeRepo.GetByDepartmentIdAsync(departmentId);
+            var employees = await _employeeRepo.GetByDepartmentIdAsync(departmentId);
+
+            if (employees == null || !employees.Any())
+            {
+                throw new NotFoundException(ResponseMessages.NotFound);
+            }
+
+            return employees;
         }
+
         public async Task UpdateAsync(int id, Employee employee)
         {
             var existingEmployee = await _employeeRepo.GetByIdAsync(id);
             if (existingEmployee == null)
             {
-                throw new NotFoundException("Employee not found!");
+                throw new NotFoundException(ResponseMessages.NotFound);
             }
 
-            if (string.IsNullOrWhiteSpace(employee.Name))
+            if (!string.IsNullOrWhiteSpace(employee.Name))
             {
-                throw new ArgumentException("Name is required.");
-            }
-            if (!Regex.IsMatch(employee.Name, @"^[a-zA-Z\s]+$"))
-            {
-                throw new ArgumentException("Name can only contain letters and spaces.");
-            }
-
-            if (string.IsNullOrWhiteSpace(employee.Surname))
-            {
-                throw new ArgumentException("Surname is required.");
+                if (!Regex.IsMatch(employee.Name, @"^[a-zA-Z\s]+$"))
+                {
+                    throw new ArgumentException("Name can only contain letters and spaces.");
+                }
+                existingEmployee.Name = employee.Name;
             }
 
-            if (employee.Age < 18)
+            if (!string.IsNullOrWhiteSpace(employee.Surname))
             {
-                throw new ArgumentException("Age must be at least 18.");
+                if (!Regex.IsMatch(employee.Surname, @"^[a-zA-Z\s]+$"))
+                {
+                    throw new ArgumentException("Surname can only contain letters and spaces.");
+                }
+                existingEmployee.Surname = employee.Surname;
             }
 
-            if (string.IsNullOrWhiteSpace(employee.Address))
+            if (employee.Age >= 18)
             {
-                throw new ArgumentException("Address is required.");
+                existingEmployee.Age = employee.Age;
             }
 
-            existingEmployee.Name = employee.Name;
-            existingEmployee.Surname = employee.Surname;
-            existingEmployee.Age = employee.Age;
-            existingEmployee.Address = employee.Address;
-            existingEmployee.DepartmentId = employee.DepartmentId;
+            if (!string.IsNullOrWhiteSpace(employee.Address))
+            {
+                existingEmployee.Address = employee.Address;
+            }
+
+            if (employee.DepartmentId > 0)
+            {
+                existingEmployee.DepartmentId = employee.DepartmentId;
+            }
 
             await _employeeRepo.UpdateAsync(existingEmployee);
+            await _employeeRepo.SaveChangesAsync();
         }
-
     }
 }

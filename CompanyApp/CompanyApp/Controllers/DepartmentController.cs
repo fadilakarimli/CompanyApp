@@ -56,7 +56,7 @@ namespace CompanyApp.Controllers
                 var existingDepartment = departments.FirstOrDefault(d => d.Name.ToLower() == name.ToLower());
                 if (existingDepartment != null)
                 {
-                    Console.WriteLine($"A department with the name '{name}' already exists. Please choose a different name.");
+                    Console.WriteLine($"A department with the name already exists. Please choose a different name.");
                     goto Name;
                 }
 
@@ -67,7 +67,7 @@ namespace CompanyApp.Controllers
 
                 if (!int.TryParse(capacityInput, out capacity) || capacity <= 0)
                 {
-                    Console.WriteLine("Invalid capacity. Please enter a valid number greater than 0.");
+                    Console.WriteLine("Invalid capacity. Please enter positive number and greater than 0.");
                     goto Capacity;
                 }
 
@@ -86,7 +86,7 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
-        }//+
+        }
         public async Task DeleteAsync()
         {
             try
@@ -137,46 +137,44 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
         public async Task GetByIdAsync()
         {
-            try
+            while (true)
             {
-                Console.WriteLine("Enter Department Id:");
-                int id;
-
-                while (!int.TryParse(Console.ReadLine(), out id) || id <= 0)
+                try
                 {
-                    Console.WriteLine("Invalid Id. Please enter a valid positive integer.");
+                    Console.WriteLine("Enter Department Id:");
+                    int id;
+
+                    while (!int.TryParse(Console.ReadLine(), out id) || id <= 0)
+                    {
+                        Console.WriteLine("Invalid Id. Please enter a valid positive integer.");
+                    }
+
+                    var department = await _departmentService.GetByIdAsync(id);
+
+                    Console.WriteLine($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
+                    break;
                 }
-
-                var department = await _departmentService.GetByIdAsync(id);
-
-                if (department == null)
+                catch (NotFoundException ex)
                 {
-                    throw new NotFoundException(ResponseMessages.NotFound);
+                    Console.WriteLine(ex.Message);  
                 }
-
-                Console.WriteLine($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message); 
+                    break; 
+                }
             }
-            catch (NotFoundException ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }   
         }
-
         public async Task GetAllAsync()
         {
             var departments = await _departmentService.GetAllAsync();
             foreach (var department in departments)
             {
-                Console.WriteLine($"Id: {department.Id}, Name: {department.Name} , {department.Capacity}");
+                Console.WriteLine($"Id: {department.Id}, Name: {department.Name} , Capacity: {department.Capacity} , DateTime :{department.CreatedDate}");
             }
-        }//+
+        }
         public async Task SearchAsync()
         {
             try
@@ -195,14 +193,14 @@ namespace CompanyApp.Controllers
 
                     foreach (var dept in allDepartments)
                     {
-                        Console.WriteLine($"Id: {dept.Id}, Name: {dept.Name}");
+                        Console.WriteLine($"Id: {dept.Id}, Name: {dept.Name} , Capacity: {dept.Capacity} , DateTime :{dept.CreatedDate}");
                     }
                     return;
                 }
 
                 if (int.TryParse(name, out int num) || name.Any(ch => !char.IsLetterOrDigit(ch) && !char.IsWhiteSpace(ch)))
                 {
-                    Console.WriteLine("Format is wrong. Please enter a valid department name.");
+                    Console.WriteLine("Format is wrong. Please enter department name.");
                     goto EnterName;
                 }
 
@@ -226,7 +224,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
         public async Task UpdateAsync()
         {
             try
@@ -250,15 +247,15 @@ namespace CompanyApp.Controllers
                 while (true)
                 {
                     string idInput = Console.ReadLine();
-                    if (string.IsNullOrWhiteSpace(idInput) || !int.TryParse(idInput, out id))
+                    if (string.IsNullOrWhiteSpace(idInput) || !int.TryParse(idInput, out id) || id <= 0)
                     {
-                        Console.WriteLine("Department Id cannot be empty. Please enter a valid Id.");
+                        Console.WriteLine(ResponseMessages.WrongFormat);
                         continue;
                     }
 
-                    var departmentToEdit = await _departmentService.GetByIdAsync(id);
+                    var departmentToUpdate = await _departmentService.GetByIdAsync(id);
 
-                    if (departmentToEdit == null)
+                    if (departmentToUpdate == null)
                     {
                         throw new NotFoundException(ResponseMessages.NotFound);
                     }
@@ -269,31 +266,31 @@ namespace CompanyApp.Controllers
                     do
                     {
                     EnterName:
-                        Console.WriteLine("Enter new Name (leave empty to keep current name):");
+                        Console.WriteLine("Enter new Name:");
 
                         newName = Console.ReadLine();
 
                         if (string.IsNullOrWhiteSpace(newName))
                         {
-                            newName = departmentToEdit.Name;
+                            newName = departmentToUpdate.Name;
                             break;
                         }
 
                         else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
                         {
                             Console.WriteLine("Name can only contain letters and spaces. Please try again.");
-                            goto EnterName;
+                            break;
                         }
                         else
                         {
                             isNameExists = departments.Any(d =>
-                                d.Name.Equals(newName, StringComparison.OrdinalIgnoreCase) && d.Id != departmentToEdit.Id);
+                                d.Name.Equals(newName, StringComparison.OrdinalIgnoreCase) && d.Id != departmentToUpdate.Id);
 
                             if (isNameExists)
                             {
                                 Console.WriteLine($"This department name '{newName}' already exists. Please enter a different name.");
                             }
-                            else if (departmentToEdit.Name.Equals(newName, StringComparison.OrdinalIgnoreCase))
+                            else if (departmentToUpdate.Name.Equals(newName, StringComparison.OrdinalIgnoreCase))
                             {
                                 Console.WriteLine("You cannot update the department with the same name.");
                                 goto EnterName;
@@ -302,10 +299,10 @@ namespace CompanyApp.Controllers
                     }
                     while (isNameExists);
 
-                    departmentToEdit.Name = newName;
+                    departmentToUpdate.Name = newName;
 
-                    int newCapacity = departmentToEdit.Capacity;
-                    bool isValidCapacity;
+                    int newCapacity = departmentToUpdate.Capacity;
+                    bool isCapacity;
                     do
                     {
                         Console.WriteLine("Enter new Capacity:");
@@ -313,25 +310,25 @@ namespace CompanyApp.Controllers
 
                         if (string.IsNullOrWhiteSpace(capacityInput))
                         {
-                            newCapacity = departmentToEdit.Capacity;
-                            isValidCapacity = true;
+                            newCapacity = departmentToUpdate.Capacity;
+                            isCapacity = true;
                         }
-                        else if (int.TryParse(capacityInput, out int parsedCapacity) && parsedCapacity > 0)
+                        else if (int.TryParse(capacityInput, out int convertedCapacity) && convertedCapacity > 0)
                         {
-                            newCapacity = parsedCapacity;
-                            isValidCapacity = true;
+                            newCapacity = convertedCapacity;
+                            isCapacity = true;
                         }
                         else
                         {
                             Console.WriteLine("Capacity must be a positive number. Please enter a valid number for capacity.");
-                            isValidCapacity = false;
+                            isCapacity = false;
                         }
                     }
-                    while (!isValidCapacity);
+                    while (!isCapacity);
 
-                    departmentToEdit.Capacity = newCapacity;
+                    departmentToUpdate.Capacity = newCapacity;
 
-                    await _departmentService.UpdateAsync(id, departmentToEdit);
+                    await _departmentService.UpdateAsync(id, departmentToUpdate);
 
                     Console.WriteLine("Department updated successfully!");
                     break;
@@ -346,7 +343,5 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
-
     }
 }

@@ -32,37 +32,35 @@ namespace CompanyApp.Controllers
         }
         public async Task GetByIdAsync()
         {
-            try
+            while (true)
             {
-                while (true)
+                try
                 {
                     Console.WriteLine("Enter Employee Id:");
+                    int id;
 
-                    if (!int.TryParse(Console.ReadLine(), out int id) || id <= 0)
+                    while (!int.TryParse(Console.ReadLine(), out id) || id <= 0)
                     {
-                        Console.WriteLine("Invalid Id. Please enter a valid positive number.");
-                        continue;
+                        Console.WriteLine("Invalid Id. Please enter a valid positive integer.");
                     }
 
                     var employee = await _employeeService.GetByIdAsync(id);
 
                     if (employee == null)
                     {
-                        throw new NotFoundException(ResponseMessages.NotFound);
+                        Console.WriteLine(ResponseMessages.NotFound);
+                        continue;
                     }
 
                     string result = $"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, DepartmentId: {employee.DepartmentId}";
                     Console.WriteLine(result);
                     break;
                 }
-            }
-            catch (NotFoundException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
             }
         }
         public async Task CreateAsync()
@@ -414,6 +412,13 @@ namespace CompanyApp.Controllers
         }
         public async Task GetByDepartmentIdAsync()
         {
+            var allDepartments = await _departmentService.GetAllAsync();
+            Console.WriteLine("Available Departments:");
+            foreach (var department in allDepartments)
+            {
+                Console.WriteLine($"Id: {department.Id}, Name: {department.Name}");
+            }
+
         EnterDepartmentId:
             Console.WriteLine("Enter Department Id:");
 
@@ -429,19 +434,27 @@ namespace CompanyApp.Controllers
                 goto EnterDepartmentId;
             }
             int departmentId = int.Parse(input);
-            var employees = await _employeeService.GetByDepartmentIdAsync(departmentId);
-            if (!employees.Any())
+
+            try
             {
-                Console.WriteLine("No employees found in this department.");
-                goto EnterDepartmentId;
+                var employees = await _employeeService.GetByDepartmentIdAsync(departmentId);
+
+                Console.WriteLine($"Employees in Department Id {departmentId}:");
+                foreach (var employee in employees)
+                {
+                    Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, " +
+                        $"Department: {(employee.Department != null ? employee.Department.Name : "Not Found")}");
+                }
             }
-            Console.WriteLine($"Employees in Department Id {departmentId}:");
-            foreach (var employee in employees)
+            catch (NotFoundException ex)
             {
-                Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, " +
-                    $"Department: {(employee.Department != null ? employee.Department.Name : "Not Found")}");
+                Console.WriteLine("Data not found.");
             }
         }
+
+
+
+
         public async Task GetEmployeesCountAsync()
         {
             var count = await _employeeService.GetEmployeesCountAsync();
@@ -458,20 +471,26 @@ namespace CompanyApp.Controllers
                 var employees = await employeeService.GetAllAsync();
                 var departments = await departmentService.GetAllAsync();
 
-                if (employees.Any())
+                if (!employees.Any())
                 {
-                    foreach (var employee in employees)
-                    {
-                        Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Address: {employee.Address}, DepartmentId: {employee.DepartmentId}");
-                    }
+                    Console.WriteLine("No employees available to edit.");
+                    return;
+                }
 
-                    Console.WriteLine("Enter Employee Id for update:");
+                foreach (var employee in employees)
+                {
+                    Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Address: {employee.Address}, DepartmentId: {employee.DepartmentId}");
+                }
+
+                Console.WriteLine("Enter Employee Id for update:");
+                int id;
+                while (true)
+                {
                     string idInput = Console.ReadLine();
-                    int id;
-                    if (string.IsNullOrWhiteSpace(idInput) || !int.TryParse(idInput, out id))
+                    if (string.IsNullOrWhiteSpace(idInput) || !int.TryParse(idInput, out id) || id <= 0)
                     {
                         Console.WriteLine("Invalid Employee Id! Please enter a valid number.");
-                        return;
+                        continue;
                     }
 
                     var employeeToEdit = await employeeService.GetByIdAsync(id);
@@ -480,10 +499,132 @@ namespace CompanyApp.Controllers
                         throw new NotFoundException(ResponseMessages.NotFound);
                     }
 
-                }
-                else
-                {
-                    Console.WriteLine("No employees available to edit.");
+                    string newName;
+                    do
+                    {
+                        Console.WriteLine("Enter new Name:");
+                        newName = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newName))
+                        {
+                            newName = employeeToEdit.Name;
+                            break;
+                        }
+                        else if (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"))
+                        {
+                            Console.WriteLine("Name can only contain letters and spaces. Please try again.");
+                        }
+                    } while (!Regex.IsMatch(newName, @"^[a-zA-Z\s]+$"));
+
+                    string newSurname;
+                    do
+                    {
+                        Console.WriteLine("Enter new Surname:");
+                        newSurname = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newSurname))
+                        {
+                            newSurname = employeeToEdit.Surname;
+                            break;
+                        }
+                        else if (!Regex.IsMatch(newSurname, @"^[a-zA-Z\s]+$"))
+                        {
+                            Console.WriteLine("Surname can only contain letters and spaces. Please try again.");
+                        }
+                    } while (!Regex.IsMatch(newSurname, @"^[a-zA-Z\s]+$"));
+
+                    int newAge = employeeToEdit.Age;
+                    while (true)
+                    {
+                        Console.WriteLine("Enter new Age:");
+                        string ageInput = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(ageInput))
+                        {
+                            break;
+                        }
+                        else if (Regex.IsMatch(ageInput, @"^(1[89]|[2-5][0-9]|6[0-5])$"))
+                        {
+                            newAge = int.Parse(ageInput);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Age must be between 18 and 65. Please enter a valid age.");
+                        }
+                    }
+
+                    string newAddress;
+                    while (true)
+                    {
+                        Console.WriteLine("Enter new Address:");
+                        newAddress = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newAddress))
+                        {
+                            newAddress = employeeToEdit.Address;
+                            break;
+                        }
+                        else if (Regex.IsMatch(newAddress, @"^\d+$"))
+                        {
+                            Console.WriteLine("Address cannot contain only numbers. Please enter a valid address.");
+                        }
+                        else if (!Regex.IsMatch(newAddress, @"^[a-zA-Z0-9\s]+$"))
+                        {
+                            Console.WriteLine("Address can only contain letters, numbers, and spaces. Please try again.");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    int newDepartmentId = employeeToEdit.DepartmentId;
+                    while (true)
+                    {
+                        Console.WriteLine("Enter new Department Id::");
+                        string departmentIdInput = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(departmentIdInput))
+                        {
+                            break;
+                        }
+                        else if (Regex.IsMatch(departmentIdInput, @"^[1-9][0-9]*$"))
+                        {
+                            int convertedDepartmentId = int.Parse(departmentIdInput);
+                            if (departments.Any(d => d.Id == convertedDepartmentId))
+                            {
+                                newDepartmentId = convertedDepartmentId;
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid Department Id! Please enter a valid existing department id.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Department Id must be a positive number. Please try again.");
+                        }
+                    }
+
+                    employeeToEdit.Name = newName;
+                    employeeToEdit.Surname = newSurname;
+                    employeeToEdit.Age = newAge;
+                    employeeToEdit.Address = newAddress;
+                    employeeToEdit.DepartmentId = newDepartmentId;
+
+                    await employeeService.UpdateAsync(id, employeeToEdit);
+
+                    var updatedEmployees = await employeeService.GetAllAsync();
+                    Console.WriteLine("Updated Employees List:");
+                    foreach (var employee in updatedEmployees)
+                    {
+                        Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Address: {employee.Address}, DepartmentId: {employee.DepartmentId}");
+                    }
+
+                    Console.WriteLine("Employee updated successfully!");
+                    break;
                 }
             }
             catch (NotFoundException ex)
@@ -495,5 +636,6 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
+
     }
 }

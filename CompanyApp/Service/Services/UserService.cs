@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Repository.Helpers.Constants;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
@@ -29,14 +30,13 @@ namespace Service.Services
 
             if (user == null)
             {
-                throw new ArgumentException("Email or Password is incorrect."); 
+                throw new ArgumentException(ValidationMessages.PasswordOrEmail); 
             }
 
             if (user.Password != password)
             {
-                throw new ArgumentException("Email or Password is incorrect.");
+                throw new ArgumentException(ValidationMessages.PasswordOrEmail);
             }
-
             return true;
         }
         public async Task RegisterAsync(User user, string confirmPassword)
@@ -48,7 +48,7 @@ namespace Service.Services
 
             if (string.IsNullOrWhiteSpace(user.FullName))
             {
-                throw new ArgumentException("Full Name cannot be empty.");
+                throw new ArgumentException(ValidationMessages.FullName);
             }
             if (!Regex.IsMatch(user.FullName, @"^[a-zA-Z\s]+$"))
             {
@@ -65,7 +65,7 @@ namespace Service.Services
             var existingUser = await _repository.GetUserByEmailAsync(user.Email);
             if (existingUser != null)
             {
-                throw new ArgumentException("A user with this email already exists.");
+                throw new ArgumentException("This email already exists.");
             }
             await _repository.CreateAsync(user);
         }
