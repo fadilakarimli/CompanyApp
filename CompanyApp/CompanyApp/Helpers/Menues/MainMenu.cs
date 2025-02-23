@@ -27,7 +27,7 @@ namespace CompanyApp.Helpers.Menues
                 Console.WriteLine("Choose one operation: 1 - Create Department , 2 - GetAll Department , 3 - GetById Department , 4 - Delete Department," +
                        "5 - SearchByNameDepartment, 6 - Update Department , 7 - Create Employee, 8 - GetAll Employee , 9 - Update Employee , 10 - GetById Employee," +
                        "11 - Delete Employee , 12 - GetEmployeesByDepartmentId , 13 - GetAllEmployeesByDepartmentName, 14 - SearchForEmployeesByNameOrSurname," +
-                      "15 - GetAllEmployeesCount , 16 - GetEmployeesByAge");
+                      "15 - GetAllEmployeesCount , 16 - GetEmployeesByAge , 17 -LogOut");
 
                 Console.WriteLine("Please select an operation: ");
                 string chooseInput = Console.ReadLine();
@@ -84,6 +84,9 @@ namespace CompanyApp.Helpers.Menues
                         case 16:
                             await _employeeController.GetByAgeAsync();
                             break;
+                        case 17:
+                            await Logout();
+                            break;
                         default:
                             Console.WriteLine("Invalid Option, try again.");
                             break;
@@ -95,5 +98,13 @@ namespace CompanyApp.Helpers.Menues
                 }
             }
         }
+        private async Task Logout()
+        {
+            Console.WriteLine("Logging out...");
+
+            var loginRegisterMenu = new LoginRegisterMenu();
+            await loginRegisterMenu.Start();
+        }
+
     }
 }

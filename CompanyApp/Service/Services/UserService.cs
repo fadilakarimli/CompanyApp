@@ -46,25 +46,29 @@ namespace Service.Services
                 throw new ArgumentException("Email must contain '@'.");
             }
 
-            if (string.IsNullOrEmpty(user.FullName) || user.FullName.Any(char.IsDigit))
+            if (string.IsNullOrWhiteSpace(user.FullName))
             {
-                throw new ArgumentException("Full Name cannot be empty or contain numbers.");
+                throw new ArgumentException("Full Name cannot be empty.");
             }
-
+            if (!Regex.IsMatch(user.FullName, @"^[a-zA-Z\s]+$"))
+            {
+                throw new ArgumentException("Full Name can only contain letters and spaces. Special characters are not allowed.");
+            }
+            if (user.Password.Length < 6)
+            {
+                throw new ArgumentException("Password must be at least 6 characters long.");
+            }
             if (user.Password != confirmPassword)
             {
                 throw new ArgumentException("Passwords do not match.");
             }
-
             var existingUser = await _repository.GetUserByEmailAsync(user.Email);
             if (existingUser != null)
             {
                 throw new ArgumentException("A user with this email already exists.");
             }
-
             await _repository.CreateAsync(user);
         }
-
 
     }
 }

@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace CompanyApp.Helpers.Menues
 {
     public class LoginRegisterMenu
     {
         private readonly IUserService _userService;
-        private readonly MainMenu _mainMenu; 
+        private readonly MainMenu _mainMenu;
 
         public LoginRegisterMenu()
         {
@@ -83,24 +84,33 @@ namespace CompanyApp.Helpers.Menues
                         }
                         else if (choice == 2)
                         {
+                            string fullName;
                         FullNameInput:
                             Console.Write("Enter Full Name for Registration: ");
-                            string fullName = Console.ReadLine();
+                            fullName = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(fullName))
                             {
                                 Console.WriteLine("Full Name is required. Please enter again.");
                                 goto FullNameInput;
                             }
+
+                            if (Regex.IsMatch(fullName, @"[!@#$%^&*(),.?""{}|<>]"))
+                            {
+                                Console.WriteLine("Full Name cannot contain special characters. Please enter again.");
+                                goto FullNameInput;
+                            }
+
                             if (fullName.Any(char.IsDigit))
                             {
                                 Console.WriteLine("Full Name cannot contain numbers. Please enter again.");
                                 goto FullNameInput;
                             }
 
+                            string email;
                         EmailInput:
                             Console.Write("Enter Email for Registration: ");
-                            string email = Console.ReadLine();
+                            email = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(email))
                             {
@@ -113,9 +123,10 @@ namespace CompanyApp.Helpers.Menues
                                 goto EmailInput;
                             }
 
+                            string password;
                         PasswordInput:
                             Console.Write("Enter Password: ");
-                            string password = Console.ReadLine();
+                            password = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(password))
                             {
@@ -123,9 +134,16 @@ namespace CompanyApp.Helpers.Menues
                                 goto PasswordInput;
                             }
 
+                            if (password.Length < 6)
+                            {
+                                Console.WriteLine("Password must be at least 6 characters long. Please enter again.");
+                                goto PasswordInput;
+                            }
+
+                            string confirmPassword;
                         ConfirmPasswordInput:
                             Console.Write("Confirm Password: ");
-                            string confirmPassword = Console.ReadLine();
+                            confirmPassword = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(confirmPassword))
                             {

@@ -29,7 +29,7 @@ namespace CompanyApp.Controllers
             {
                 Console.WriteLine($"Id: {employee.Id}, Name: {employee.Name}, Surname: {employee.Surname}, Age: {employee.Age}, Address : {employee.Address} , DepartmentId: {employee.DepartmentId}");
             }
-        }//+
+        }
         public async Task GetByIdAsync()
         {
             try
@@ -412,7 +412,7 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-        public async Task GetByDepartmentIdAsync()//+
+        public async Task GetByDepartmentIdAsync()
         {
         EnterDepartmentId:
             Console.WriteLine("Enter Department Id:");
@@ -446,7 +446,7 @@ namespace CompanyApp.Controllers
         {
             var count = await _employeeService.GetEmployeesCountAsync();
             Console.WriteLine($"Total count for Employees: {count}");
-        }//+
+        }
         public async Task UpdateAsync()
         {
             try
@@ -495,7 +495,5 @@ namespace CompanyApp.Controllers
                 Console.WriteLine(ex.Message);
             }
         }
-
-
     }
 }
